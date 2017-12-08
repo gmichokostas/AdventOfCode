@@ -20,7 +20,6 @@ foreach my $line (<STDIN>) {
   my @splitted_line = split(" ", $line);
   my @sorted_line = map {sort_string $_} @splitted_line;
 
-
   my @uniq_sorted_line = uniq @sorted_line;
 
   $counter_1++ if $#line == $#uniq_line;
