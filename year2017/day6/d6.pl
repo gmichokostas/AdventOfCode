@@ -22,7 +22,7 @@ sub maxindex {
 my $redistribution = 0;
 my %seen_arrays = (join("", @banks) => [1, 0]);
 
-while (1) {
+while ($seen_arrays{join("", @banks)}->[0] <= 1) {
   my $idx = maxindex(\@banks);
   my $blocks = $banks[$idx];
 
@@ -41,11 +41,7 @@ while (1) {
     $seen_arrays{$key}->[1] += 1;
   }
 
-  if ($seen_arrays{join("", @banks)}->[0] > 1) {
-    say $seen_arrays{join("", @banks)}->[1]-1; # print circles
-    last;
-  }
-
 }
 
 say $redistribution;
+say $seen_arrays{join("", @banks)}->[1]-1; # print circles
