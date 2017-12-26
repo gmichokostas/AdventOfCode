@@ -32,7 +32,7 @@ while ($seen_arrays{"@banks"}->[0] <= 1) {
   while ($blocks != 0) {
     $blocks--;
     $idx++;
-    if ($idx > $#banks) { $idx = 0; }
+    $idx = 0 if ($idx > $#banks);
     $banks[$idx] += 1;
   }
 
