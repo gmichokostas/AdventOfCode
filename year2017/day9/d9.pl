@@ -23,9 +23,9 @@ foreach my $string (<STDIN>) {
             $in_garbage = 0;
         } elsif ($char eq '!') {
             $ignore = 1;
-        } elsif ($char eq '{' && !$in_garbage) {
+        } elsif ($char eq '{') {
             $level += 1;
-        } elsif ($char eq '}' && !$in_garbage) {
+        } elsif ($char eq '}') {
             $score += $level--;
         }
     }
