@@ -9,7 +9,7 @@ my @banks = split(" ", <STDIN>);
 sub maxindex {
   my $arr_ref = shift;
   my $max_index = 0;
-  for my $index (0.. scalar(@$arr_ref) - 1) {
+  for my $index (0..scalar(@$arr_ref) - 1) {
     if (($arr_ref->[$index] > $arr_ref->[$max_index]) &&
         $arr_ref->[$index] != $arr_ref->[$max_index]) {
       $max_index = $index;
