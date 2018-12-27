@@ -34,7 +34,6 @@
                                      (string/split (b 0) #"")
                                      (string/split (b 1) #"")) 2))
                     len (- (count (b 0)) 1)]
-                ;; (println result len)
                 (if (= (count result) len)
                   (reduced result)
                   a)))
