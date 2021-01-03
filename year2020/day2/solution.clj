@@ -6,7 +6,7 @@
 ;; (re-matcher #"(\d+)-(\d+) (\w): (\w+)" "1-3 a: abc")
 (defn- parse [line]
   (let [[policy char password] (str/split line #" ")]
-    ;; a better option is to use a map with the ch normalized
+    ;; a better option is to use a map with the char normalized
     [(->> (str/split policy #"-")
           (map #(Integer/parseInt %)))
      (subs char 0 1)

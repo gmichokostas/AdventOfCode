@@ -7,7 +7,7 @@
   (s/split input #"\n\n"))
 
 (defn serialize-passport [passport]
-  (let [str-fields (s/split passport #"\s|\n")]
+  (let [str-fields (s/split passport #"\s")]
     (into {}
           (map #(s/split %1 #":")
                str-fields))))
@@ -40,7 +40,7 @@
 
 (defn validate-height [height]
   (let [[_ num unit] (->> height (re-matcher #"(\d+)(cm|in)") re-find)]
-    (cond
+    (cond                               ; NOTE: alternative use `case`
       (= unit "cm") (<= 150 (Integer/parseInt num) 193)
       (= unit "in") (<= 59 (Integer/parseInt num) 76)
       :else false)))
