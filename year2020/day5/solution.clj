@@ -17,12 +17,14 @@
   (+ (* row 8)
      column))
 
+(defmulti direction identity)
+(defmethod direction \F [_] lower-half)
+(defmethod direction \L [_] lower-half)
+(defmethod direction \B [_] upper-half)
+(defmethod direction \R [_] upper-half)
+
 (defn navigation [directions]
-  (map (fn [dir]
-         (case dir
-           (\F \L) lower-half
-           (\B \R) upper-half))
-       directions))
+  (map direction directions))
 
 (defn locate [collection directions]
   (reduce (fn [init dir]
@@ -54,5 +56,5 @@
 (->> input
      (map #(split-at 7 %))
      (map find-seat-id)
-     (sort <)
+     sort
      find-missing-seat)
